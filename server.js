@@ -26,6 +26,18 @@ app
     .get('/', (req, res) => {
         res.render('index.ejs')
     })
+    .get('/trips', (req, res) => {
+        res.render('trips.ejs')
+    })
+    .get('/trips/:trip', (req, res) => {
+        res.render('trip_details.ejs')
+    })
+    .get('/trips/:trip/book', (req, res) => {
+        res.render('book.ejs')
+    })
+    .get('/trips/:trip/book/:bookingNR/confirmed', (req, res) => {
+        res.render('confirmed.ejs')
+    })
     .get('/users/:user', (req, res) => {
         const user = req.params.user;
         res.render('profile.ejs', {
@@ -33,6 +45,6 @@ app
         });
     })
     // 404 page
-    .use((req, res) => {
-        res.status(404).render('not_found.ejs');
-    });
+    // .use((req, res) => {
+    //     res.status(404).render('not_found.ejs');
+    // });
