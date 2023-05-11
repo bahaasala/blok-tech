@@ -15,6 +15,9 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
     .set('views', 'views')
 
+// urlencoded for form data
+app.use(express.urlencoded({ extended: true }))
+
 // routes
 app
     .get('/', (req, res) => {
@@ -26,3 +29,7 @@ app
             user: user
         });
     })
+    // 404 page
+    .use((req, res) => {
+        res.status(404).render('not_found.ejs');
+    });
