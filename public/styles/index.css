@@ -1,5 +1,14 @@
+h2 {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  color: #04153D;
+}
+
 body {
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 /*# sourceMappingURL=index.css.map */
