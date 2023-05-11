@@ -8,6 +8,9 @@ app.listen(port, (err) => {
     console.log(`Example app listening on port ${port}`)
 })
 
+// connect database
+const connect = require('./connect');
+
 // serving static files in Express
 app.use(express.static('public'))
 
