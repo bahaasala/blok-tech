@@ -8,7 +8,32 @@ h2 {
 }
 
 body {
-  background-color: #fff;
+  background-color: #ffffff;
+}
+
+.home__trips {
+  display: flex;
+  overflow: auto;
+  flex-grow: 1;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0;
+  color: #ffffff;
+}
+.home__trips li {
+  padding: 0px 20px;
+  list-style-type: none;
+}
+.home__trips li:first-child {
+  padding-left: 0px;
+}
+.home ::-webkit-scrollbar {
+  display: none;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=index.css.map */

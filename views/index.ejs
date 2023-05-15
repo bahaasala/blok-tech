@@ -1,16 +1,20 @@
 <%- include('head.ejs') %>
 <body>
-    <div class="home container">
-        <section>
-            <h2>Explore the World</h2>
-            <a href="/"></a>
-        </section>
-       
-        <div>
-            <ul>
-                <li><img src="/images/lisbon.jpg"/></li>
-                <li><img src="/images/bali.jpg"/></li>
-            </ul>
-        </div>
+  <div class="home container">
+    <section>
+      <h2>Explore the World</h2>
+      <a href="/"></a>
+    </section>
+    <div>
+      <ul class="home__trips">
+        <% for (let trip of trips) { %> <% if (trip.image) { %>
+        <li>
+          <img src="/images/<%= trip.image %>" />
+        </li>
+        <% } else { %>
+        <span>No image available</span>
+        <% } %> <% } %>
+      </ul>
     </div>
+  </div>
 </body>
