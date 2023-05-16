@@ -27,4 +27,22 @@ async function connect() {
   }
 }
 
+// promise function
+// const connect = () =>
+//   new Promise((resolve, reject) => {
+//     client
+//       .connect()
+//       .then(() => client.db("admin").command({ ping: 1 }))
+//       .then(() => {
+//         console.log(
+//           "Pinged your deployment. You successfully connected to MongoDB!"
+//         );
+//         resolve();
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//         reject(err);
+//       });
+//   });
+
 module.exports = { db, connect };
