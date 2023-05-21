@@ -1,14 +1,12 @@
+<%- include('head.ejs') %> <%- include('header.ejs') %>
 <div class="trip container">
   <div>
-    <img />
+    <% if (trip) { %>
+    <img src="/images/<%= trip.image %>" />
+    <h1><%= trip.destination %></h1>
+    <p><%= trip.price %></p>
+    <p><%= trip.description %></p>
+    <% } %>
   </div>
-  <section>
-    <h2>Barcelona</h2>
-    <p>Date</p>
-    <span>price</span>
-    <span>per person</span>
-    <p>description</p>
-    <iframe></iframe>
-    <a>Book now</a>
-  </section>
+  <a href="/trips/<%= trip.slug %>/book">Book now</a>
 </div>

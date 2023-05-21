@@ -33,7 +33,10 @@ app
     try {
       const user = await db.collection("users").findOne({ name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
-      res.render("index.ejs", { user: user, trips: trips });
+      res.render("index.ejs", {
+        user: user,
+        trips: trips,
+      });
     } catch (err) {
       next(err);
     }
@@ -42,15 +45,65 @@ app
     try {
       const user = await db.collection("users").findOne({ name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
-      res.render("trips.ejs", { user: user, trips: trips });
-      console.log(trips);
+      res.render("trips.ejs", {
+        user: user,
+        trips: trips,
+      });
+      // console.log(trips);
     } catch (err) {
       next(err);
     }
   })
   .get("/trips/:trip", async (req, res, next) => {
     try {
-      res.render("trip_details.ejs");
+      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const tripSlug = req.params.trip;
+      const trip = await db.collection("trips").findOne({ slug: tripSlug });
+      if (!trip) {
+        res.status(404).render("not_found.ejs");
+        return;
+      }
+      console.log(trip);
+      res.render("trip_details.ejs", {
+        user: user,
+        trip: trip,
+      });
+    } catch (err) {
+      next(err);
+    }
+  })
+  .get("/trips/:trip/book", async (req, res, next) => {
+    try {
+      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const tripSlug = req.params.trip;
+      const trip = await db.collection("trips").findOne({ slug: tripSlug });
+
+      if (!trip) {
+        res.status(404).render("not_found.ejs");
+        return;
+      }
+      // console.log(trip);
+      res.render("book.ejs", {
+        user: user,
+        trip: trip,
+      });
+    } catch (err) {
+      next(err);
+    }
+  })
+  .post("/trips/:trip/book", async (req, res, next) => {
+    const tripSlug = req.params.trip;
+    const dateRange = req.body;
+    const selectedRoom = req.body;
+
+    console.log(tripSlug);
+    res.redirect("/trips/" + tripSlug + "/book/confirmed");
+  })
+
+  .get("/trips/:trip/book/confirmed", async (req, res, next) => {
+    try {
+      // console.log(trip);
+      res.render("confirmed.ejs");
     } catch (err) {
       next(err);
     }
