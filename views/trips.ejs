@@ -1,29 +1,21 @@
-<%- include('head.ejs') %>
-<header>
-  <div>
-    <nav>
-      <a><img class="avatar" src="/images/<%= user.image %>" />icon</a>
-      <h1>Welcome, <%= user.name %>!</h1>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/trips">Trips</a></li>
-      </ul>
-    </nav>
-    <a><img />Profile</a>
-  </div>
-</header>
+<%- include('head.ejs') %> <%- include('header.ejs') %>
 <div class="trips container">
-  <h1>Explore trips</h1>
+  <h1>trips</h1>
   <div>
-    <% for (let trip of trips) { %>
-    <li><%= trip.destination %></li>
-    <% if (trip.image) { %>
-    <img src="/images/<%= trip.image %>" />
-    <% } else { %>
-    <span>No image available</span>
-    <% } %> <% } %>
+    <ul class="trips-list">
+      <% for (let trip of trips) { %> <% if (trip.image) { %>
+      <li>
+        <a href="/trips/<%= trip.slug %>">
+          <img src="/images/<%= trip.image %>" />
+          <h3><%= trip.destination %></h3>
+        </a>
+      </li>
+      <% } else { %>
+      <span>No image available</span>
+      <% } %> <% } %>
+    </ul>
   </div>
-  <h2>Add a Trip</h2>
+  <!-- <h2>Add a Trip</h2>
   <form method="POST" action="/trips" enctype="multipart/form-data">
     <label for="destination">Destination:</label>
     <input type="text" id="destination" name="destination" required />
@@ -32,5 +24,5 @@
     <input type="file" id="image" name="image" required />
 
     <button type="submit">Add Trip</button>
-  </form>
+  </form> -->
 </div>

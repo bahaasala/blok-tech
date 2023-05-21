@@ -3,35 +3,51 @@
 
 body {
     background-color: $color-white;
+    margin: 0;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: $color-blue;
+    color: $color-white;
+}
 .home{
-    // home trips list
-    &__trips{
-        display: flex;
-        overflow: auto;
-        flex-grow: 1;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        padding: 0;
-        color: $color-white;
-        li{
-            &:first-child{
-                padding-left: 0px;
-            }
-            padding: 0px 20px;
-            list-style-type: none;
+    margin: 25px;
+    &__logo{
+        width: 200px;
+    }
+}
+.trips-list{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    flex-grow: 1;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0;
+    color: $color-white;
+    li{
+        a{
+            display: block;
         }
+        &:first-child{
+            padding-left: 0px;
+        }
+        padding: 0px 20px;
+        list-style-type: none;
     }
-    // hide horizontal scrollbar
-    ::-webkit-scrollbar{
-        display:none
-    }
+    
 }
 .avatar{
     width: 30px;
     height: 30px;
 }
-.trips{
-
+// hide horizontal scrollbar
+::-webkit-scrollbar{
+    display:none
 }

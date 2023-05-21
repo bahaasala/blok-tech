@@ -1,5 +1,13 @@
-h2 {
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
   font-size: 60px;
+}
+
+h2 {
+  font-size: 40px;
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -9,9 +17,29 @@ h2 {
 
 body {
   background-color: #ffffff;
+  margin: 0;
 }
 
-.home__trips {
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #04153D;
+  color: #ffffff;
+}
+
+.home {
+  margin: 25px;
+}
+.home__logo {
+  width: 200px;
+}
+
+.trips-list {
+  position: absolute;
+  left: 0;
+  width: 100%;
   display: flex;
   overflow: auto;
   flex-grow: 1;
@@ -20,20 +48,24 @@ body {
   padding: 0;
   color: #ffffff;
 }
-.home__trips li {
+.trips-list li {
   padding: 0px 20px;
   list-style-type: none;
 }
-.home__trips li:first-child {
-  padding-left: 0px;
+.trips-list li a {
+  display: block;
 }
-.home ::-webkit-scrollbar {
-  display: none;
+.trips-list li:first-child {
+  padding-left: 0px;
 }
 
 .avatar {
   width: 30px;
   height: 30px;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

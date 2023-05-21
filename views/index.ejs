@@ -1,12 +1,14 @@
-<%- include('head.ejs') %>
+<%- include('head.ejs') %> <%- include('header.ejs') %>
 <body>
   <div class="home container">
     <section>
-      <h2>Explore the World</h2>
-      <a href="/"></a>
+      <img src="/images/logo.svg" alt="logo" class="home__logo" />
+      <p>making group travel cool!</p>
+      <h2>Adventure Awaits, Student Style!</h2>
+      <a href="/trips">explore now</a>
     </section>
     <div>
-      <ul class="home__trips">
+      <ul class="trips-list">
         <% for (let trip of trips) { %> <% if (trip.image) { %>
         <li>
           <img src="/images/<%= trip.image %>" />

@@ -14,7 +14,7 @@ const client = new MongoClient(uri, {
 
 const db = client.db(process.env.DB_NAME);
 
-async function connect() {
+const connect = async () => {
   try {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
@@ -25,24 +25,6 @@ async function connect() {
     console.log(err);
     throw err;
   }
-}
-
-// promise function
-// const connect = () =>
-//   new Promise((resolve, reject) => {
-//     client
-//       .connect()
-//       .then(() => client.db("admin").command({ ping: 1 }))
-//       .then(() => {
-//         console.log(
-//           "Pinged your deployment. You successfully connected to MongoDB!"
-//         );
-//         resolve();
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         reject(err);
-//       });
-//   });
+};
 
 module.exports = { db, connect };
