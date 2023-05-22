@@ -1,13 +1,16 @@
 <%- include('head.ejs') %> <%- include('header.ejs') %>
 <div class="trips container">
-  <h1>trips</h1>
-  <div>
+  <!-- <div class="background-overlay"></div> -->
+  <section class="trips__heading">
+    <h1>trips</h1>
+  </section>
+  <div class="trips__container">
     <ul class="trips-list">
       <% for (let trip of trips) { %> <% if (trip.image) { %>
       <li>
         <a href="/trips/<%= trip.slug %>">
           <img src="/images/<%= trip.image %>" />
-          <h3><%= trip.destination %></h3>
+          <h3 class="trips__trip-heading"><%= trip.destination %></h3>
         </a>
       </li>
       <% } else { %>

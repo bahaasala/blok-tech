@@ -1,12 +1,32 @@
-<%- include('head.ejs') %> <%- include('header.ejs') %>
+<%- include('head.ejs') %>
 <div class="trip container">
-  <div>
-    <% if (trip) { %>
-    <img src="/images/<%= trip.image %>" />
-    <h1><%= trip.destination %></h1>
-    <p><%= trip.price %></p>
-    <p><%= trip.description %></p>
-    <% } %>
+  <% if (trip) { %>
+  <div
+    class="trip__image-container"
+    style="background-image: url('/images/<%= trip.image %>')"
+  ></div>
+  <div class="trip__details-container">
+    <div class="trip__title-container">
+      <div>
+        <h1 class="trip__title"><%= trip.destination %></h1>
+        <p class="trip__duration"><%= trip.duration %> day tour</p>
+      </div>
+      <div>
+        <p class="trip__price">,- <%= trip.price %></p>
+        <p class="trip__per-person">per person</p>
+      </div>
+    </div>
+    <div class="trip__details-inner-container">
+      <section>
+        <h4>description</h4>
+        <p><%= trip.description %></p>
+      </section>
+      <section>
+        <h4>duration</h4>
+        <p><%= trip.duration %> days</p>
+      </section>
+    </div>
   </div>
-  <a href="/trips/<%= trip.slug %>/book">Book now</a>
+  <% } %>
+  <a href="/trips/<%= trip.slug %>/book" class="btn book-btn">Book now</a>
 </div>

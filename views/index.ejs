@@ -1,13 +1,13 @@
-<%- include('head.ejs') %> <%- include('header.ejs') %>
+<%- include('head.ejs') %>
 <body>
   <div class="home container">
-    <section>
-      <img src="/images/logo.svg" alt="logo" class="home__logo" />
-      <p>making group travel cool!</p>
-      <h2>Adventure Awaits, Student Style!</h2>
-      <a href="/trips">explore now</a>
-    </section>
-    <div>
+    <div class="home__intro-container">
+      <img class="home__logo" src="/images/logo.svg" alt="logo" />
+      <p class="home__tagline">making group travel cool!</p>
+      <h2 class="home__title">Adventure Awaits, Student Style!</h1>
+      <a class="btn home__btn" href="/trips">explore now</a>
+    </div>
+    <div class="home__trips-container">
       <ul class="trips-list">
         <% for (let trip of trips) { %> <% if (trip.image) { %>
         <li>
