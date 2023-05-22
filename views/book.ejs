@@ -1,68 +1,90 @@
 <%- include('head.ejs') %>
-<div class="book-trip trip container">
+<div class="trip book-trip container">
   <% if (trip) { %>
   <div
-    class="trip__image-container image-container"
+    class="trip__image-container book-trip__image-container"
     style="background-image: url('/images/<%= trip.image %>')"
   ></div>
   <div class="trip__details-container">
-    <div class="trip__title-container">
+    <div class="title-container">
+      <section>
+        <h1 class="title"><%= trip.destination %></h1>
+        <p class="duration"><%= trip.duration %> day tour</p>
+      </section>
       <div>
-        <h1 class="trip__title"><%= trip.destination %></h1>
-        <p class="trip__duration"><%= trip.duration %> day tour</p>
-      </div>
-      <div>
-        <p class="trip__price">,- <%= trip.price %></p>
-        <p class="trip__per-person">per person</p>
+        <p class="price">,- <%= trip.price %></p>
+        <p class="per-person">per person</p>
       </div>
     </div>
-    <div class="trip__details-inner-container"></div>
-  </div>
-  <div>
-    <form action="" method="POST">
-      <% for (let available of trip.availability) { %>
-      <label for="date_range">
-        <input
-          type="radio"
-          id="date_range"
-          name="date_range"
-          value="<%= available.start_date %>-<%= available.end_date %>"
-          required
-        />
-        <span><%= available.start_date %> - <%= available.end_date %></span>
-      </label>
-      <% } %>
-      <br />
-      <% for (let room of trip.rooms) { %>
-      <label for="room">
-        <input
-          type="radio"
-          id="room"
-          name="room"
-          value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
-          required
-        />
-        <span><%= room.type %></span>
-        <span><%= room.gender %></span>
-        <span>€<%= room.price %></span>
-      </label>
-      <% } %>
-      <br />
-      <input
-        name="first_name"
-        type="text"
-        value="<%= user.first_name %>"
-        readonly
-      />
-      <input
-        name="last_name"
-        type="text"
-        value="<%= user.last_name %>"
-        readonly
-      />
-      <input name="email" type="text" value="<%= user.email %>" readonly />
-      <button type="submit">Book now</button>
-    </form>
+    <div class="inner-container">
+      <form class="booking-form" action="" method="POST">
+        <section>
+          <h4>availability</h4>
+          <% for (let available of trip.availability) { %>
+          <label>
+            <div class="select-box">
+              <input
+                type="radio"
+                name="date_range"
+                value="<%= available.start_date %>-<%= available.end_date %>"
+                required
+              />
+              <span>
+                <%= available.start_date %> - <%= available.end_date %>
+              </span>
+            </div>
+          </label>
+          <% } %>
+        </section>
+        <section>
+          <h4>room type</h4>
+          <% for (let room of trip.rooms) { %>
+          <label for="room">
+            <input
+              type="radio"
+              id="room"
+              name="room"
+              value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
+              required
+            />
+            <span><%= room.type %></span>
+            <span><%= room.gender %></span>
+            <span>€<%= room.price %></span>
+          </label>
+          <% } %>
+        </section>
+        <section>
+          <h4>your personal info</h4>
+          <input
+            name="first_name"
+            type="text"
+            value="<%= user.first_name %>"
+            readonly
+          />
+          <input
+            name="last_name"
+            type="text"
+            value="<%= user.last_name %>"
+            readonly
+          />
+          <input name="email" type="text" value="<%= user.email %>" readonly />
+        </section>
+        <button class="btn book-btn" type="submit">Book now</button>
+      </form>
+    </div>
   </div>
   <% } %>
 </div>
+<script>
+  const selectBox = document.querySelectorAll(".select-box");
+  console.log(selectBox);
+
+  selectBox.forEach((box) => {
+    box.addEventListener("click", () => {
+      selectBox.forEach((box) => {
+        box.classList.remove("selected");
+      });
+      box.classList.add("selected");
+    });
+  });
+</script>
