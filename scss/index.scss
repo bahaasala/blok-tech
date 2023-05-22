@@ -188,3 +188,27 @@ ul.trips-list{
     right: 25px;
     padding: 10px 50px;
 }
+
+// Intersection observer animations
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(20px); /* Initial position off-screen */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+  
+.slide-in-left.in-view {
+    opacity: 1;
+    transform: translateX(0); /* Slide in from the left */
+}
+
+.slide-in-top {
+    opacity: 0;
+    transform: translateY(20px); /* Initial position off-screen */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+  
+.slide-in-top.in-view {
+    opacity: 1;
+    transform: translateY(0); /* Slide in from the top */
+}
+  

@@ -40,16 +40,18 @@
           <h4>room type</h4>
           <% for (let room of trip.rooms) { %>
           <label for="room">
-            <input
-              type="radio"
-              id="room"
-              name="room"
-              value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
-              required
-            />
-            <span><%= room.type %></span>
-            <span><%= room.gender %></span>
-            <span>€<%= room.price %></span>
+            <div class="select-box-room">
+              <input
+                type="radio"
+                id="room"
+                name="room"
+                value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
+                required
+              />
+              <span><%= room.type %></span>
+              <span><%= room.gender %></span>
+              <span>€<%= room.price %></span>
+            </div>
           </label>
           <% } %>
         </section>
@@ -75,16 +77,3 @@
   </div>
   <% } %>
 </div>
-<script>
-  const selectBox = document.querySelectorAll(".select-box");
-  console.log(selectBox);
-
-  selectBox.forEach((box) => {
-    box.addEventListener("click", () => {
-      selectBox.forEach((box) => {
-        box.classList.remove("selected");
-      });
-      box.classList.add("selected");
-    });
-  });
-</script>
