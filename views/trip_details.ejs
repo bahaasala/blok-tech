@@ -6,17 +6,17 @@
     style="background-image: url('/images/<%= trip.image %>')"
   ></div>
   <div class="trip__details-container">
-    <div class="trip__title-container">
-      <div>
-        <h1 class="trip__title"><%= trip.destination %></h1>
+    <div class="title-container">
+      <section>
+        <h1 class="title"><%= trip.destination %></h1>
         <p class="trip__duration"><%= trip.duration %> day tour</p>
-      </div>
+      </section>
       <div>
-        <p class="trip__price">,- <%= trip.price %></p>
-        <p class="trip__per-person">per person</p>
+        <p class="price">,- <%= trip.price %></p>
+        <p class="per-person">per person</p>
       </div>
     </div>
-    <div class="trip__details-inner-container">
+    <div class="inner-container">
       <section>
         <h4>description</h4>
         <p><%= trip.description %></p>

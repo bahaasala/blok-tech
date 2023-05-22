@@ -108,7 +108,7 @@ img {
   margin-top: 50px;
 }
 
-.trips__heading {
+.trips__heading-container {
   margin: 35px 25px 0px 25px;
 }
 .trips .trips-list li:first-child {
@@ -169,25 +169,26 @@ ul.trips-list li img {
   border-top-left-radius: 40px;
   background: #ffffff;
 }
-.trip__title-container {
+.trip__details-container .title-container {
   display: flex;
   justify-content: space-between;
 }
-.trip__title-container p {
+.trip__details-container .title-container p {
   margin: 0;
 }
-.trip__title {
+.trip__details-container .title-container .title {
   margin: 0;
   font-size: 35px;
 }
-.trip__price {
+.trip__details-container .title-container .price {
   font-size: 40px;
   font-weight: 600;
   text-align: right;
 }
-.trip__per-person {
+.trip__details-container .title-container .per-person {
   text-align: right;
 }
+
 .book-trip .image-container {
   height: 100px;
 }

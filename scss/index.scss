@@ -62,7 +62,7 @@ img {
 
 // Trips
 .trips{
-    &__heading{
+    &__heading-container{
         margin: 35px 25px 0px 25px;
     }
     .trips-list{
@@ -130,30 +130,29 @@ ul.trips-list{
         padding: 35px 25px 0px 25px;
         border-top-left-radius: 40px;
         background: $color-white;
-    }
-    &__title-container{
-        display: flex;
-        justify-content: space-between;
-        p{
-            margin: 0;
+        .title-container{
+            display: flex;
+            justify-content: space-between;
+            p{
+                margin: 0;
+            }
+            .title{
+                margin: 0;
+                font-size: 35px;
+            }
+            .price{
+                font-size: 40px;
+                font-weight: 600;
+                text-align: right;
+            }
+            .per-person{
+                text-align: right;
+            }
         }
     }
-    &__title{
-        margin: 0;
-        font-size: 35px;
-    }
-    &__price{
-        font-size: 40px;
-        font-weight: 600;
-        text-align: right;
-    }
-    &__per-person{
-        text-align: right;
-    }
-    &__details-inner-container{
-
-    }
 }
+
+// Book trip
 .book-trip{
     .image-container{
         height: 100px;
