@@ -1,4 +1,5 @@
 const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
 const { db, connect } = require("./connect");
 const app = express();
 const port = 3000;
@@ -21,7 +22,9 @@ connectDB();
 // serving static files in server
 app.use(express.static("public"));
 
-// setting views to views folder
+// set templating engine
+app.use(expressLayouts);
+app.set("layout", "./layouts/layout");
 app.set("view engine", "ejs").set("views", "views");
 
 // urlencoded for form data
@@ -36,6 +39,7 @@ app
         .findOne({ first_name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
       res.render("index.ejs", {
+        title: "Home",
         user: user,
         trips: trips,
       });
@@ -50,6 +54,7 @@ app
         .findOne({ first_name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
       res.render("trips.ejs", {
+        title: "Trips",
         user: user,
         trips: trips,
       });
@@ -71,6 +76,7 @@ app
       }
       console.log(trip);
       res.render("trip_details.ejs", {
+        title: trip.destination,
         user: user,
         trip: trip,
       });
@@ -110,6 +116,7 @@ app
       }
       // console.log(trip);
       res.render("book.ejs", {
+        title: trip.destination + " - Book",
         user: user,
         trip: trip,
       });
@@ -140,6 +147,7 @@ app
     try {
       // console.log(trip);
       res.render("confirmed.ejs", {
+        title: "Booking Confirmed",
         user: user,
       });
     } catch (err) {
@@ -149,7 +157,7 @@ app
 
   // 404 page
   .use((req, res) => {
-    res.status(404).render("not_found.ejs");
+    res.status(404).render("not_found.ejs", { title: "404 Not found" });
   });
 
 // .get("/trips/:trip/book", (req, res) => {

@@ -94,6 +94,7 @@ ul.trips-list{
     padding: 0;
     margin: 0;
     color: $color-white;
+    overflow-y: hidden;
     li{
         min-width: 250px;
         flex: 0 0 auto;
