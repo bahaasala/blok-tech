@@ -31,7 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 app
   .get("/", async (req, res) => {
     try {
-      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const user = await db
+        .collection("users")
+        .findOne({ first_name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
       res.render("index.ejs", {
         user: user,
@@ -43,7 +45,9 @@ app
   })
   .get("/trips", async (req, res) => {
     try {
-      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const user = await db
+        .collection("users")
+        .findOne({ first_name: "Bahaa" });
       const trips = await db.collection("trips").find().toArray();
       res.render("trips.ejs", {
         user: user,
@@ -56,7 +60,9 @@ app
   })
   .get("/trips/:trip", async (req, res, next) => {
     try {
-      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const user = await db
+        .collection("users")
+        .findOne({ first_name: "Bahaa" });
       const tripSlug = req.params.trip;
       const trip = await db.collection("trips").findOne({ slug: tripSlug });
       if (!trip) {
@@ -74,7 +80,9 @@ app
   })
   .get("/trips/:trip/book", async (req, res, next) => {
     try {
-      const user = await db.collection("users").findOne({ name: "Bahaa" });
+      const user = await db
+        .collection("users")
+        .findOne({ first_name: "Bahaa" });
       const tripSlug = req.params.trip;
       const trip = await db.collection("trips").findOne({ slug: tripSlug });
 
@@ -92,22 +100,40 @@ app
     }
   })
   .post("/trips/:trip/book", async (req, res, next) => {
+    const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     const tripSlug = req.params.trip;
-    const dateRange = req.body;
-    const selectedRoom = req.body;
+    const trip = await db.collection("trips").findOne({ slug: tripSlug });
+    // const dateRange = req.body;
+    // const selectedRoom = req.body;
+    const data = {
+      destination: trip.destination,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      ...req.body,
+    };
 
-    console.log(tripSlug);
+    await db.collection("bookings").insertOne(data);
+    console.log(data);
     res.redirect("/trips/" + tripSlug + "/book/confirmed");
   })
-
   .get("/trips/:trip/book/confirmed", async (req, res, next) => {
+    const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     try {
       // console.log(trip);
-      res.render("confirmed.ejs");
+      res.render("confirmed.ejs", {
+        user: user,
+      });
     } catch (err) {
       next(err);
     }
+  })
+
+  // 404 page
+  .use((req, res) => {
+    res.status(404).render("not_found.ejs");
   });
+
 // .get("/trips/:trip/book", (req, res) => {
 //   res.render("book.ejs");
 // })
@@ -120,11 +146,6 @@ app
 //   res.render("profile.ejs", {
 //     user: user,
 //   });
-// });
-
-// 404 page
-// .use((req, res) => {
-//     res.status(404).render('not_found.ejs');
 // });
 
 // Configure multer to specify where to save uploaded files

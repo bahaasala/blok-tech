@@ -13,6 +13,7 @@
           id="date_range"
           name="date_range"
           value="<%= available.start_date %>-<%= available.end_date %>"
+          required
         />
         <span><%= available.start_date %> - <%= available.end_date %></span>
       </label>
@@ -20,13 +21,32 @@
       <br />
       <% for (let room of trip.rooms) { %>
       <label for="room">
-        <input type="radio" id="room" name="room" value="<%= room.type %>" />
+        <input
+          type="radio"
+          id="room"
+          name="room"
+          value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
+          required
+        />
         <span><%= room.type %></span>
         <span><%= room.gender %></span>
         <span>€<%= room.price %></span>
       </label>
       <% } %>
       <br />
+      <input
+        name="first_name"
+        type="text"
+        value="<%= user.first_name %>"
+        readonly
+      />
+      <input
+        name="last_name"
+        type="text"
+        value="<%= user.last_name %>"
+        readonly
+      />
+      <input name="email" type="text" value="<%= user.email %>" readonly />
       <button type="submit">Book now</button>
     </form>
     <% } %>

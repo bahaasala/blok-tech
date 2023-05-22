@@ -59,6 +59,10 @@ header {
   padding-left: 0px;
 }
 
+.trip {
+  margin-bottom: 200px;
+}
+
 .avatar {
   width: 30px;
   height: 30px;
