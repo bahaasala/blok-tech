@@ -1,24 +1,18 @@
+// Font family
 body{
     font-family: 'Montserrat', sans-serif;
 }
-
-h1, h2, h3, h4, h5, h6{
-    color: $color-blue;
-}
-
 p {
     color: $color-black;
 }
 
-a{
-    color: $color-orange;
-    text-decoration: none;
+// Headings
+h1, h2, h3, h4, h5, h6{
+    color: $color-blue;
 }
-
 h1 {
     font-size: 40px;
 }
-
 h2 {
     font-size: 40px;
     font-weight: 400;
@@ -28,7 +22,6 @@ h2 {
     margin-top: 0;
     color: $color-blue;
 }
-
 h3 {
     font-size: 30px;
     font-weight: 400;
@@ -37,6 +30,12 @@ h3 {
     margin-bottom: 1rem;
     margin-top: 0;
     color: $color-blue;
+}
+
+// Links
+a{
+    color: $color-orange;
+    text-decoration: none;
 }
 .btn{
     display: block;

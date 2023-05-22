@@ -2,17 +2,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #1B2739;
-}
-
 p {
   color: #000000;
 }
 
-a {
-  color: #E85C05;
-  text-decoration: none;
+h1, h2, h3, h4, h5, h6 {
+  color: #1B2739;
 }
 
 h1 {
@@ -39,6 +34,11 @@ h3 {
   color: #1B2739;
 }
 
+a {
+  color: #E85C05;
+  text-decoration: none;
+}
+
 .btn {
   display: block;
   background-color: #E85C05;
@@ -59,6 +59,21 @@ body {
   margin: 0;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+header .avatar {
+  width: 30px;
+  height: 30px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 .container {
   max-width: 425px;
   margin: 0 auto;
@@ -68,30 +83,23 @@ img {
   width: 100%;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-}
-
 .home__intro-container {
   margin: 35px 25px 0px 25px;
 }
-.home__logo {
+.home__intro-container .logo {
   width: 200px;
 }
-.home__tagline {
+.home__intro-container .tagline {
   font-size: 20px;
   font-weight: 100;
   color: #1B2739;
   margin-bottom: 10px;
   margin-top: 40px;
 }
-.home__title {
+.home__intro-container .title {
   max-width: 300px;
 }
-.home__btn {
+.home__intro-container .btn {
   margin-top: 35px;
   margin-left: 120px;
 }
@@ -115,7 +123,7 @@ header {
   margin-top: 30px;
 }
 
-.trips-list {
+ul.trips-list {
   left: 0;
   width: 100%;
   display: flex;
@@ -127,21 +135,21 @@ header {
   margin: 0;
   color: #ffffff;
 }
-.trips-list li {
+ul.trips-list li {
   min-width: 250px;
   flex: 0 0 auto;
   padding: 0px 20px;
   list-style-type: none;
   align-items: stretch;
 }
-.trips-list li a {
+ul.trips-list li a {
   display: block;
   width: 100%;
 }
-.trips-list li:first-child {
+ul.trips-list li:first-child {
   padding-left: 0px;
 }
-.trips-list li img {
+ul.trips-list li img {
   border-radius: 15px;
   border-top-right-radius: 190px;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
@@ -189,15 +197,6 @@ header {
   bottom: 25px;
   right: 25px;
   padding: 10px 50px;
-}
-
-.avatar {
-  width: 30px;
-  height: 30px;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */
