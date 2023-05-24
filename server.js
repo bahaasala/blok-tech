@@ -58,7 +58,7 @@ app
         user: user,
         trips: trips,
       });
-      // console.log(trips);
+      console.log(trips);
     } catch (err) {
       next(err);
     }
