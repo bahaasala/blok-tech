@@ -156,19 +156,23 @@ ul.trips-list li img {
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.trip {
-  margin-bottom: 200px;
-}
 .trip__image-container {
+  position: absolute;
+  max-width: 425px;
   background-size: cover;
-  background-position: center;
-  height: 300px;
-  margin-bottom: -50px;
+  background-position: top;
+  min-height: 100vh;
+  width: 100%;
+  top: 0;
+  z-index: 1;
 }
 .trip__details-container {
-  padding: 35px 25px 0px 25px;
+  position: sticky;
+  padding: 30px 25px 30px 25px;
   border-top-left-radius: 40px;
+  z-index: 2;
   background: #ffffff;
+  margin-top: 300px;
 }
 .trip__details-container .title-container {
   display: flex;
@@ -192,6 +196,9 @@ ul.trips-list li img {
 
 .book-trip__image-container {
   height: 100px;
+}
+.book-trip__details-container {
+  margin-top: 100px;
 }
 .book-trip form.booking-form .select-box {
   display: inline-block;
@@ -217,10 +224,8 @@ ul.trips-list li img {
 }
 
 .book-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
   padding: 10px 50px;
+  max-width: 100px;
 }
 
 .slide-in-left {

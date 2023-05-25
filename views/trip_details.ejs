@@ -4,8 +4,8 @@
     class="trip__image-container"
     style="background-image: url('/images/<%= trip.image %>')"
   ></div>
-  <div class="trip__details-container">
-    <div class="title-container">
+  <div class="trip__details-container slide-in-top">
+    <div class="title-container slide-in-top">
       <section>
         <h1 class="title"><%= trip.destination %></h1>
         <p class="trip__duration"><%= trip.duration %> day tour</p>
@@ -15,7 +15,7 @@
         <p class="per-person">per person</p>
       </div>
     </div>
-    <div class="inner-container">
+    <div class="inner-container slide-in-top">
       <section>
         <h4>description</h4>
         <p><%= trip.description %></p>
@@ -25,7 +25,7 @@
         <p><%= trip.duration %> days</p>
       </section>
     </div>
+    <a href="/trips/<%= trip.slug %>/book" class="btn book-btn">Book now</a>
   </div>
   <% } %>
-  <a href="/trips/<%= trip.slug %>/book" class="btn book-btn">Book now</a>
 </div>

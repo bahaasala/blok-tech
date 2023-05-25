@@ -139,7 +139,7 @@ app
     };
 
     await db.collection("bookings").insertOne(data);
-    console.log(data);
+    console.log(req.body);
     res.redirect("/trips/" + tripSlug + "/book/confirmed");
   })
   .get("/trips/:trip/book/confirmed", async (req, res, next) => {
