@@ -172,7 +172,7 @@ ul.trips-list li img {
   border-top-left-radius: 40px;
   z-index: 2;
   background: #ffffff;
-  margin-top: 300px;
+  margin: 300px 20px 0px 20px;
 }
 .trip__details-container .title-container {
   display: flex;
