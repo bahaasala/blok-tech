@@ -25,4 +25,3 @@ const searchPhotos = async (query, orderBy) => {
 };
 
 searchPhotos("Amsterdam");
-// searchPhotos("Rio de Janeiro", "popular"); // Retrieve best-rated pictures

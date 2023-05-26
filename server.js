@@ -114,7 +114,6 @@ app
         res.status(404).render("not_found.ejs");
         return;
       }
-      // console.log(trip);
       res.render("book.ejs", {
         title: trip.destination + " - Book",
         user: user,
@@ -128,8 +127,6 @@ app
     const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     const tripSlug = req.params.trip;
     const trip = await db.collection("trips").findOne({ slug: tripSlug });
-    // const dateRange = req.body;
-    // const selectedRoom = req.body;
     const data = {
       destination: trip.destination,
       first_name: user.first_name,
@@ -145,7 +142,6 @@ app
   .get("/trips/:trip/book/confirmed", async (req, res, next) => {
     const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     try {
-      // console.log(trip);
       res.render("confirmed.ejs", {
         title: "Booking Confirmed",
         user: user,
@@ -159,46 +155,3 @@ app
   .use((req, res) => {
     res.status(404).render("not_found.ejs", { title: "404 Not found" });
   });
-
-// .get("/trips/:trip/book", (req, res) => {
-//   res.render("book.ejs");
-// })
-// .get("/trips/:trip/book/:bookingNR/confirmed", (req, res) => {
-//   res.render("confirmed.ejs");
-// })
-
-// .get("/users/:user", (req, res) => {
-//   const user = req.params.user;
-//   res.render("profile.ejs", {
-//     user: user,
-//   });
-// });
-
-// Configure multer to specify where to save uploaded files
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "public/images");
-//   },
-//   filename: (req, file, cb) => {
-//     const fileName = Date.now() + "-" + file.originalname;
-//     cb(null, fileName);
-//   },
-// });
-
-// file upload
-// const upload = multer({ storage });
-
-// routes POST requests
-// app.post("/trips", upload.single("image"), async (req, res, next) => {
-//   try {
-//     const { destination } = req.body;
-//     const imagePath = req.file.filename;
-
-//     // Insert the new trip into the MongoDB collection
-//     await db.collection("trips").insertOne({ destination, image: imagePath });
-
-//     res.redirect("/trips"); // Redirect to the trips page after successful submission
-//   } catch (err) {
-//     next(err);
-//   }
-// });
