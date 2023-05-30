@@ -146,6 +146,8 @@ app
     res.redirect("/trips/" + tripSlug + "/book/confirmed/" + bookingId);
   })
   .get("/trips/:trip/book/confirmed/:bookingId", async (req, res, next) => {
+    const tripSlug = req.params.trip;
+    const trip = await db.collection("trips").findOne({ slug: tripSlug });
     const bookingId = req.params.bookingId;
 
     // Validate bookingId format
@@ -186,7 +188,56 @@ app
       res.render("confirmed.ejs", {
         title: "Booking Confirmed",
         user: user,
+        trip: trip,
         booking: booking,
+      });
+    } catch (err) {
+      next(err);
+    }
+  })
+  .post(
+    "/trips/:trip/book/confirmed/:bookingId/delete",
+    async (req, res, next) => {
+      const bookingId = req.params.bookingId;
+
+      try {
+        const booking = await db
+          .collection("bookings")
+          .findOne({ _id: new ObjectId(bookingId) });
+
+        if (!booking) {
+          return res.status(404).render("not_found.ejs", {
+            title: "Booking Not Found",
+            message: "The booking does not exist.",
+          });
+        }
+
+        // Delete the booking from the database
+        await db
+          .collection("bookings")
+          .deleteOne({ _id: new ObjectId(bookingId) });
+
+        console.log("Booking deleted:", booking);
+
+        res.redirect("/trips"); // Redirect to the trips page after deletion
+      } catch (err) {
+        next(err);
+      }
+    }
+  )
+  // profile edit
+  .get("/profile/edit", async (req, res, next) => {
+    try {
+      const user = await db
+        .collection("users")
+        .findOne({ first_name: "Bahaa" });
+
+      const referer = req.headers.referer;
+
+      res.render("profile.ejs", {
+        title: "Edit Profile",
+        user: user,
+        referer: referer,
       });
     } catch (err) {
       next(err);
