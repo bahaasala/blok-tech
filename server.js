@@ -1,4 +1,5 @@
 const express = require("express");
+const { ObjectId } = require("mongodb");
 const expressLayouts = require("express-ejs-layouts");
 const { db, connect } = require("./connect");
 const app = express();
@@ -15,6 +16,9 @@ const connectDB = async () => {
     console.error("Failed to connect to MongoDB:", err);
   }
 };
+
+// urlencoded for form data
+app.use(express.urlencoded({ extended: true }));
 
 // call the connectDB function
 connectDB();
@@ -55,7 +59,7 @@ app
         user: user,
         trips: trips,
       });
-      console.log(trips);
+      // console.log(trips);
     } catch (err) {
       next(err);
     }
@@ -71,7 +75,7 @@ app
         res.status(404).render("not_found.ejs");
         return;
       }
-      console.log(trip);
+      // console.log(trip);
       res.render("trip_details.ejs", {
         title: trip.destination,
         user: user,
@@ -108,7 +112,7 @@ app
       });
 
       if (!trip) {
-        res.status(404).render("not_found.ejs");
+        res.status(404).render("not_found.ejs", { title: "404 Not found" });
         return;
       }
       res.render("book.ejs", {
@@ -124,6 +128,11 @@ app
     const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     const tripSlug = req.params.trip;
     const trip = await db.collection("trips").findOne({ slug: tripSlug });
+
+    const test = req.body;
+
+    console.log(test);
+
     const data = {
       destination: trip.destination,
       first_name: user.first_name,
@@ -132,16 +141,24 @@ app
       ...req.body,
     };
 
-    await db.collection("bookings").insertOne(data);
-    console.log(req.body);
-    res.redirect("/trips/" + tripSlug + "/book/confirmed");
+    const booking = await db.collection("bookings").insertOne(data);
+    const bookingId = booking.insertedId;
+    res.redirect("/trips/" + tripSlug + "/book/confirmed/" + bookingId);
   })
-  .get("/trips/:trip/book/confirmed", async (req, res, next) => {
+  .get("/trips/:trip/book/confirmed/:bookingId", async (req, res, next) => {
     const user = await db.collection("users").findOne({ first_name: "Bahaa" });
+    const bookingId = req.params.bookingId;
     try {
+      const booking = await db
+        .collection("bookings")
+        .findOne({ _id: new ObjectId(bookingId) });
+
+      console.log(booking);
+
       res.render("confirmed.ejs", {
         title: "Booking Confirmed",
         user: user,
+        booking: booking,
       });
     } catch (err) {
       next(err);

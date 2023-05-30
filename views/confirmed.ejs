@@ -3,7 +3,11 @@
     <img />
   </div>
   <section>
-    <h2>Barcelona</h2>
+    <% if (booking) { %>
+    <h2><%= booking.destination %></h2>
+
+    <% } %>
+
     <p>Date</p>
     <ul>
       <!-- loop -->

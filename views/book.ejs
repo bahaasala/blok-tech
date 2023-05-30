@@ -16,7 +16,11 @@
       </div>
     </div>
     <div class="inner-container">
-      <form class="booking-form" action="" method="POST">
+      <form
+        class="booking-form"
+        action="/trips/<%= trip.slug %>/book"
+        method="POST"
+      >
         <section>
           <h4>availability</h4>
           <% for (let available of trip.availability) { %>
@@ -39,7 +43,7 @@
           <h4>room type</h4>
           <% for (let room of trip.rooms) { %>
           <label for="room">
-            <div class="select-box-room">
+            <div class="select-box">
               <input
                 type="radio"
                 id="room"
