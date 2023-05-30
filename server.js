@@ -27,9 +27,6 @@ app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 app.set("view engine", "ejs").set("views", "views");
 
-// urlencoded for form data
-app.use(express.urlencoded({ extended: true }));
-
 // routes GET requests
 app
   .get("/", async (req, res) => {
