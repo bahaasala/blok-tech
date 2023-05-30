@@ -128,10 +128,9 @@ app
     const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     const tripSlug = req.params.trip;
     const trip = await db.collection("trips").findOne({ slug: tripSlug });
-
-    const test = req.body;
-
-    console.log(test);
+    const currentDate = new Date();
+    const offsetInMilliseconds = currentDate.getTimezoneOffset() * 60 * 1000;
+    const created_at = new Date(currentDate.getTime() - offsetInMilliseconds);
 
     const data = {
       destination: trip.destination,
@@ -139,6 +138,7 @@ app
       last_name: user.last_name,
       email: user.email,
       ...req.body,
+      created_at,
     };
 
     const booking = await db.collection("bookings").insertOne(data);
@@ -146,12 +146,40 @@ app
     res.redirect("/trips/" + tripSlug + "/book/confirmed/" + bookingId);
   })
   .get("/trips/:trip/book/confirmed/:bookingId", async (req, res, next) => {
-    const user = await db.collection("users").findOne({ first_name: "Bahaa" });
     const bookingId = req.params.bookingId;
+
+    // Validate bookingId format
+    if (!ObjectId.isValid(bookingId)) {
+      return res.status(400).render("not_found.ejs", {
+        title: "Invalid Booking ID",
+        message: "The booking ID provided is invalid.",
+      });
+    }
+
     try {
       const booking = await db
         .collection("bookings")
         .findOne({ _id: new ObjectId(bookingId) });
+
+      if (!booking) {
+        return res.status(404).render("not_found.ejs", {
+          title: "Booking Not Found",
+          message: "The booking does not exist.",
+        });
+      }
+
+      const user = await db.collection("users").findOne({
+        first_name: booking.first_name,
+        last_name: booking.last_name,
+        email: booking.email,
+      });
+
+      if (!user) {
+        return res.status(403).render("not_found.ejs", {
+          title: "Access Denied",
+          message: "You are not authorized to view this booking.",
+        });
+      }
 
       console.log(booking);
 
