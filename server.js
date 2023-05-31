@@ -65,7 +65,6 @@ app
       next(err);
     }
   })
-
   .get("/trips", async (req, res) => {
     try {
       const user = await db
@@ -243,7 +242,6 @@ app
       }
     }
   )
-  // profile edit
   .get("/profile/edit", async (req, res, next) => {
     try {
       const user = await db

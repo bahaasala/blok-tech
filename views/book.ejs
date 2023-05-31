@@ -26,43 +26,43 @@
         <section>
           <h4>availability</h4>
           <% for (let available of trip.availability) { %>
-          <label>
-            <div class="select-box">
-              <input
-                type="radio"
-                name="date_range"
-                value="<%= available.start_date %>-<%= available.end_date %>"
-                required
-              />
+          <div class="select-box">
+            <input
+              type="radio"
+              name="date_range"
+              value="<%= available.start_date %>-<%= available.end_date %>"
+              required
+            />
+            <label>
               <span>
                 <%= available.start_date %> - <%= available.end_date %>
               </span>
-            </div>
-          </label>
+            </label>
+          </div>
           <% } %>
         </section>
         <section>
           <h4>room type</h4>
           <% for (let room of trip.rooms) { %>
-          <label for="room">
-            <div class="select-box">
-              <input
-                type="radio"
-                id="room"
-                name="room"
-                value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
-                required
-              />
+          <div class="select-box">
+            <input
+              type="radio"
+              id="room"
+              name="room"
+              value="<%= room.type %> <%= room.gender %> €<%= room.price %>"
+              required
+            />
+            <label class="" for="room">
               <span><%= room.type %></span>
               <span><%= room.gender %></span>
               <span>€<%= room.price %></span>
-            </div>
-          </label>
+            </label>
+          </div>
           <% } %>
         </section>
-        <section>
+        <section class="personal-info">
           <!-- edit personal info -->
-          <a href="/profile/edit" class="btn btn--secondary">edit</a>
+          <!-- <a href="/profile/edit" class="btn btn--secondary">edit</a> -->
           <h4>your personal info</h4>
           <input
             name="first_name"
@@ -78,7 +78,12 @@
           />
           <input name="email" type="text" value="<%= user.email %>" readonly />
         </section>
-        <button class="btn book-btn" type="submit">Book now</button>
+        <div class="book-btn-container">
+          <div class="spacer"></div>
+          <div>
+            <button class="btn book-btn" type="submit">Book now</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>

@@ -1,16 +1,3 @@
-// select box
-const selectBox = document.querySelectorAll(".select-box");
-console.log(selectBox);
-
-selectBox.forEach((box) => {
-  box.addEventListener("click", () => {
-    selectBox.forEach((box) => {
-      box.classList.remove("selected");
-    });
-    box.classList.add("selected");
-  });
-});
-
 // Intersection observer animations
 const options = {
   rootMargin: "0px 0px -50px 0px",
