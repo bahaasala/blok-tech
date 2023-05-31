@@ -33,7 +33,6 @@ app.set("layout", "./layouts/layout");
 app.set("view engine", "ejs").set("views", "views");
 
 // routes GET requests
-app;
 app
   .get("/", async (req, res, next) => {
     try {
@@ -54,7 +53,8 @@ app
         })
       );
 
-      console.log(updatedTrips);
+      // console.log(trips);
+      // console.log(updatedTrips);
 
       res.render("index.ejs", {
         title: "Home",

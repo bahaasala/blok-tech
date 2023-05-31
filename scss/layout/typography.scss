@@ -46,6 +46,7 @@ a{
     text-align: center;
     border: solid 1px $color-orange;
     transition: 0.25s ease-in-out;
+    font-size: 16px;
     &:hover{
         background-color: $color-white;
         color: $color-orange;

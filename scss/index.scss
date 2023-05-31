@@ -12,8 +12,11 @@ header {
     align-items: center;
     padding: 20px;
     .avatar{
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     }
 }
 // hide horizontal scrollbar
@@ -146,7 +149,7 @@ ul.trips-list{
 // Single trip
 .trip{
     &__image-container{
-        position: absolute;
+        position: fixed;
         max-width: 425px;
         background-size: cover;
         background-position: top;
@@ -161,10 +164,11 @@ ul.trips-list{
         border-top-left-radius: 40px;
         z-index: 2;
         background: $color-white;
-        margin: 300px 20px 0px 20px;
+        margin: 200px 20px 0px 20px;
         .title-container{
             display: flex;
             justify-content: space-between;
+            margin-bottom: 50px;
             p{
                 margin: 0;
             }
@@ -181,6 +185,11 @@ ul.trips-list{
                 text-align: right;
             }
         }
+        .inner-container{
+            section{
+                margin-bottom: 50px;
+            }
+        }
     }
 }
 
@@ -191,6 +200,7 @@ ul.trips-list{
     }
     &__details-container{
         margin-top: 100px;
+        margin-bottom: 100px;
     }
     form.booking-form{
         .select-box{
@@ -215,6 +225,16 @@ ul.trips-list{
             background-color: $color-blue;
             color: $color-white;
         }
+        .book-btn{
+            
+        }
+    }
+}
+.book-btn-container{
+    display: flex;
+    justify-content: space-between;
+    .spacer{
+        width: 100px;
     }
 }
 .book-btn{

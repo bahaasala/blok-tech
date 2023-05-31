@@ -11,7 +11,7 @@
         <p class="trip__duration"><%= trip.duration %> day tour</p>
       </section>
       <div>
-        <p class="price">,- <%= trip.price %></p>
+        <p class="price"><%= trip.price %>,-</p>
         <p class="per-person">per person</p>
       </div>
     </div>
@@ -25,9 +25,14 @@
         <p><%= trip.duration %> days</p>
       </section>
     </div>
-    <a href="/trips/<%= trip.slug %>/book" class="btn book-btn slide-in-top"
-      >Book now</a
-    >
+    <div class="book-btn-container">
+      <div class="spacer"></div>
+      <div>
+        <a href="/trips/<%= trip.slug %>/book" class="btn book-btn slide-in-top"
+          >Book now</a
+        >
+      </div>
+    </div>
   </div>
   <% } %>
 </div>

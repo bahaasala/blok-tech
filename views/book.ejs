@@ -2,10 +2,12 @@
   <% if (trip) { %>
   <div
     class="trip__image-container book-trip__image-container"
-    style="background-image: url('/images/<%= trip.image %>')"
+    style="background-image: url('<%= trip.images[0] %>')"
   ></div>
-  <div class="trip__details-container book-trip__details-container">
-    <div class="title-container">
+  <div
+    class="trip__details-container book-trip__details-container slide-in-top"
+  >
+    <div class="title-container slide-in-top">
       <section>
         <h1 class="title"><%= trip.destination %></h1>
         <p class="duration"><%= trip.duration %> day tour</p>
@@ -15,7 +17,7 @@
         <p class="per-person">per person</p>
       </div>
     </div>
-    <div class="inner-container">
+    <div class="inner-container slide-in-top">
       <form
         class="booking-form"
         action="/trips/<%= trip.slug %>/book"

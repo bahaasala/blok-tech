@@ -5,6 +5,8 @@
     </a>
   </div>
   <% if (user) { %>
-  <a><img class="avatar" src="/images/<%= user.image %>" /></a>
+  <a href="/profile/edit">
+    <img class="avatar" src="/images/<%= user.image %>" />
+  </a>
   <% } %>
 </header>
