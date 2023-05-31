@@ -66,6 +66,7 @@ img {
         margin: 35px 25px 0px 25px;
     }
     .trips-list{
+        padding-top: 20px;
         padding-bottom: 200px;
         li{
             &:first-child{
@@ -128,6 +129,7 @@ ul.trips-list{
         }
         img {
             position: absolute;
+            height: 100%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
