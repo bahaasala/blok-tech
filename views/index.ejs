@@ -7,13 +7,15 @@
     </div>
     <div class="home__trips-container">
       <ul class="trips-list">
-        <% for (let trip of trips) { %> <% if (trip.image) { %>
-        <li class="trip-item">
-          <img src="/images/<%= trip.image %>" />
-        </li>
-        <% } else { %>
-        <span>No image available</span>
-        <% } %> <% } %>
-      </ul>
+        <% for (let trip of trips) { %>
+          <% if (trip.images[0]) { %>
+            <li class="trip-item">
+              <img class="trip-image" src="<%= trip.images[0] %>" alt="Trip Image">
+            </li>
+          <% } else { %>
+            <span>No image available</span>
+          <% } %>
+        <% } %>
+      </ul>                
   </div>
 </div>

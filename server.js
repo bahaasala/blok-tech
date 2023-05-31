@@ -2,6 +2,7 @@ const express = require("express");
 const { ObjectId } = require("mongodb");
 const expressLayouts = require("express-ejs-layouts");
 const { db, connect } = require("./connect");
+const unsplash = require("./unsplash");
 const app = express();
 const port = 3000;
 
@@ -32,22 +33,39 @@ app.set("layout", "./layouts/layout");
 app.set("view engine", "ejs").set("views", "views");
 
 // routes GET requests
+app;
 app
-  .get("/", async (req, res) => {
+  .get("/", async (req, res, next) => {
     try {
       const user = await db
         .collection("users")
         .findOne({ first_name: "Bahaa" });
+
       const trips = await db.collection("trips").find().toArray();
+
+      const updatedTrips = await Promise.all(
+        trips.map(async (trip) => {
+          const photos = await unsplash.searchPhotos(trip.destination);
+          trip.images = photos.map((photo) => photo.url);
+          await db
+            .collection("trips")
+            .updateOne({ _id: trip._id }, { $set: trip });
+          return trip;
+        })
+      );
+
+      console.log(updatedTrips);
+
       res.render("index.ejs", {
         title: "Home",
         user: user,
-        trips: trips,
+        trips: updatedTrips,
       });
     } catch (err) {
       next(err);
     }
   })
+
   .get("/trips", async (req, res) => {
     try {
       const user = await db
@@ -183,7 +201,7 @@ app
         });
       }
 
-      console.log(booking);
+      // console.log(booking);
 
       res.render("confirmed.ejs", {
         title: "Booking Confirmed",

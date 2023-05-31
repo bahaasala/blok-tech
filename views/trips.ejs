@@ -6,11 +6,15 @@
   </section>
   <div class="trips__container">
     <ul class="trips-list">
-      <% for (let trip of trips) { %> <% if (trip.image) { %>
+      <% for (let trip of trips) { %> <% if (trip.images[0]) { %>
       <li class="trip-item">
         <a href="/trips/<%= trip.slug %>">
-          <img src="/images/<%= trip.image %>" />
-          <h3 class="title"><%= trip.destination %></h3>
+          <div class="trip-image-container">
+            <img src="<%= trip.images[0] %>" />
+          </div>
+          <div class="trip-title-container">
+            <h3 class="title"><%= trip.destination %></h3>
+          </div>
         </a>
       </li>
       <% } else { %>

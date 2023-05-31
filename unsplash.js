@@ -5,7 +5,7 @@ const accessKey = process.env.ACCESS_KEY_UNSPLASH;
 const searchPhotos = async (query, orderBy) => {
   try {
     const response = await fetch(
-      `https://api.unsplash.com/search/photos?query=${query}&per_page=10`,
+      `https://api.unsplash.com/search/photos?query=${query}&per_page=5`,
       {
         headers: {
           Authorization: `Client-ID ${accessKey}`,
@@ -15,13 +15,18 @@ const searchPhotos = async (query, orderBy) => {
 
     const data = await response.json();
 
-    // Extract regular quality URLs from the response data
-    const photos = data.results;
-    const photoURLs = photos.map((photo) => photo.urls.regular);
-    console.log(photoURLs);
+    const photos = data.results.map((photo) => ({
+      url: photo.urls.regular,
+      description: photo.description,
+    }));
+
+    return photos;
   } catch (error) {
     console.error("Error:", error);
+    return [];
   }
 };
 
-searchPhotos("Amsterdam");
+module.exports = {
+  searchPhotos: searchPhotos,
+};
