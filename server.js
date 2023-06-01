@@ -222,12 +222,9 @@ app
           });
         }
 
-        // Delete the booking from the database
         await db
           .collection("bookings")
           .deleteOne({ _id: new ObjectId(bookingId) });
-
-        console.log("Booking deleted:", booking);
 
         res.redirect("/trips");
       } catch (err) {

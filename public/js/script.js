@@ -41,3 +41,5 @@ setTimeout(() => {
     });
   });
 }, initialDelay);
+
+// confirm delete

@@ -57,6 +57,12 @@ a {
 .btn--secondary {
   background-color: #4CA6FE;
   border-color: #4CA6FE;
+  font-size: 12px;
+}
+.btn--danger {
+  background-color: #e80505;
+  border-color: #e80505;
+  font-size: 12px;
 }
 
 body {
@@ -299,6 +305,10 @@ ul.trips-list li img {
 .confirmed h2 {
   font-size: 30px;
   margin-bottom: 50px;
+}
+.confirmed .buttons-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .slide-in-left {
