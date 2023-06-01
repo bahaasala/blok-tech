@@ -53,9 +53,6 @@ app
         })
       );
 
-      // console.log(trips);
-      // console.log(updatedTrips);
-
       res.render("index.ejs", {
         title: "Home",
         user: user,
@@ -76,7 +73,6 @@ app
         user: user,
         trips: trips,
       });
-      // console.log(trips);
     } catch (err) {
       next(err);
     }
@@ -92,7 +88,6 @@ app
         res.status(404).render("not_found.ejs");
         return;
       }
-      // console.log(trip);
       res.render("trip_details.ejs", {
         title: trip.destination,
         user: user,
@@ -200,8 +195,6 @@ app
         });
       }
 
-      // console.log(booking);
-
       res.render("confirmed.ejs", {
         title: "Booking Confirmed",
         user: user,
@@ -236,7 +229,7 @@ app
 
         console.log("Booking deleted:", booking);
 
-        res.redirect("/trips"); // Redirect to the trips page after deletion
+        res.redirect("/trips");
       } catch (err) {
         next(err);
       }

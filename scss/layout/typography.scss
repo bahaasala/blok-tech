@@ -51,4 +51,8 @@ a{
         background-color: $color-white;
         color: $color-orange;
     }
+    &--secondary{
+        background-color: $color-blue--lighter;
+        border-color: $color-blue--lighter;
+    }
 }

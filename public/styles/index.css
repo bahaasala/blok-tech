@@ -54,6 +54,10 @@ a {
   background-color: #ffffff;
   color: #E85C05;
 }
+.btn--secondary {
+  background-color: #4CA6FE;
+  border-color: #4CA6FE;
+}
 
 body {
   background-color: #ffffff;
@@ -270,6 +274,9 @@ ul.trips-list li img {
   line-height: 1.8em;
   padding: 15px 25px;
 }
+.book-trip form.booking-form .select-box-room {
+  min-height: 30px;
+}
 .book-trip form.booking-form .personal-info input {
   border: none;
   font-size: 20px;
@@ -287,6 +294,11 @@ ul.trips-list li img {
 
 .book-btn {
   padding: 10px 50px;
+}
+
+.confirmed h2 {
+  font-size: 30px;
+  margin-bottom: 50px;
 }
 
 .slide-in-left {

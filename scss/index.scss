@@ -235,6 +235,9 @@ ul.trips-list{
                 padding: 15px 25px;
             }
         }
+        .select-box-room{
+            min-height: 30px;
+        }
         .personal-info{
             input{
                 border: none;
@@ -258,6 +261,13 @@ ul.trips-list{
 }
 .book-btn{
     padding: 10px 50px;
+}
+
+.confirmed{
+    h2{
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
 }
 
 // Intersection observer animations
