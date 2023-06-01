@@ -11,7 +11,7 @@ const connectDB = async () => {
   try {
     await connect();
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      console.log(`Explora listening on port ${port}`);
     });
   } catch (err) {
     console.error("Failed to connect to MongoDB:", err);
