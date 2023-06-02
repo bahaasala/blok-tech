@@ -1,21 +1,17 @@
 <div class="home container">
-    <div class="home__intro-container">
-      <img class="logo slide-in-left" src="/images/logo.svg" alt="logo" />
-      <p class="tagline slide-in-left">making group travel cool!</p>
-      <h2 class="title slide-in-left">Adventure Awaits, Student Style!</h1>
-      <a class="btn slide-in-top" href="/trips">explore now</a>
-    </div>
-    <div class="home__trips-container">
-      <ul class="trips-list">
-        <% for (let trip of trips) { %>
-          <% if (trip.images[0]) { %>
-            <li class="trip-item">
-              <img class="trip-image" src="<%= trip.images[0] %>" alt="Trip Image">
-            </li>
-          <% } else { %>
-            <span>No image available</span>
-          <% } %>
-        <% } %>
-      </ul>                
+  <div class="home__intro-container">
+    <img class="logo slide-in-left" src="/images/logo.svg" alt="logo" />
+    <p class="tagline slide-in-left">making group travel cool!</p>
+    <h2 class="title slide-in-left">Adventure Awaits, Student Style!</h2>
+    <a class="btn slide-in-top" href="/trips">explore now</a>
+  </div>
+  <div class="home__trips-container">
+    <ul class="trips-list">
+      <% for (let trip of trips) { %> <% for (let image of trip.images) { %>
+      <li class="trip-item">
+        <img class="trip-image" src="<%= image.url %>" alt="<%= image.alt %>" />
+      </li>
+      <% } %> <% } %>
+    </ul>
   </div>
 </div>

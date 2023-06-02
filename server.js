@@ -45,7 +45,12 @@ app
       const updatedTrips = await Promise.all(
         trips.map(async (trip) => {
           const photos = await unsplash.searchPhotos(trip.destination);
-          trip.images = photos.map((photo) => photo.url);
+          trip.images = photos.map((photo) => {
+            return {
+              url: photo.url,
+              alt: photo.alt,
+            };
+          });
           await db
             .collection("trips")
             .updateOne({ _id: trip._id }, { $set: trip });

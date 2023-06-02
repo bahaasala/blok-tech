@@ -17,7 +17,7 @@ const searchPhotos = async (query, orderBy) => {
 
     const photos = data.results.map((photo) => ({
       url: photo.urls.regular,
-      description: photo.description,
+      alt: photo.description,
     }));
 
     return photos;
