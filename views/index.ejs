@@ -7,11 +7,13 @@
   </div>
   <div class="home__trips-container">
     <ul class="trips-list">
-      <% for (let trip of trips) { %> <% for (let image of trip.images) { %>
+      <% for (let trip of trips) { %>
       <li class="trip-item">
+        <% for (let image of trip.images) { %>
         <img class="trip-image" src="<%= image.url %>" alt="<%= image.alt %>" />
+        <% } %>
       </li>
-      <% } %> <% } %>
+      <% } %>
     </ul>
   </div>
 </div>

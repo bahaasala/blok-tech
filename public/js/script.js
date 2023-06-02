@@ -28,7 +28,7 @@ const tripItems = document.querySelectorAll(".trip-item");
 
 gsap.set(tripItems, { opacity: 0, y: 200 });
 
-const initialDelay = 700;
+const initialDelay = 1200;
 
 setTimeout(() => {
   tripItems.forEach((item, index) => {
@@ -41,3 +41,14 @@ setTimeout(() => {
     });
   });
 }, initialDelay);
+
+// Loading animation
+window.addEventListener("load", () => {
+  const loadingElement = document.querySelector(".loading");
+  const main = document.querySelector("main");
+
+  setTimeout(() => {
+    loadingElement.style.display = "none";
+    main.style.display = "block";
+  }, 500); // 1000 milliseconds = 1 second
+});

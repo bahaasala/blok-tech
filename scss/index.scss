@@ -6,6 +6,18 @@ body {
     background-color: $color-white;
     margin: 0;
 }
+main {
+    display: none;
+}
+.loading {
+    position: absolute;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 0;
+    height: 100vh;
+}
 header {
     display: flex;
     justify-content: space-between;
@@ -143,7 +155,10 @@ ul.trips-list{
             border-top-right-radius: 190px;
             box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
         }
-    }   
+    }  
+    li.active {
+        transform: scale(1.03) !important;
+    } 
 }
 
 // Single trip
@@ -296,5 +311,3 @@ ul.trips-list{
     opacity: 1;
     transform: translateY(0); /* Slide in from the top */
 }
-  
-
