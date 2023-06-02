@@ -42,7 +42,7 @@ setTimeout(() => {
   });
 }, initialDelay);
 
-// Loading animation
+// Loading animation - Window: load event
 window.addEventListener("load", () => {
   const loadingElement = document.querySelector(".loading");
   const main = document.querySelector("main");
