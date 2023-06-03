@@ -1,4 +1,4 @@
-// Intersection observer animations
+// Intersection observer
 const options = {
   rootMargin: "0px 0px -50px 0px",
   threshold: 0,
@@ -50,5 +50,5 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     loadingElement.style.display = "none";
     main.style.display = "block";
-  }, 500); // 1000 milliseconds = 1 second
+  }, 500);
 });
